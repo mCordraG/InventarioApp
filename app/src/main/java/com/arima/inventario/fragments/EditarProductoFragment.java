@@ -51,8 +51,6 @@ public class EditarProductoFragment extends DefaultFragment{
                 Snackbar.make(view, "error", Snackbar.LENGTH_LONG).show();
             }
         });
-
-
     }
 }
 
