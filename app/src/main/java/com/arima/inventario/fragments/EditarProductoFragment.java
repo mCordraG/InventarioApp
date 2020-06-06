@@ -33,8 +33,8 @@ public class EditarProductoFragment extends DefaultFragment{
 
     @Override
     public void createViewItems(View root) {
-        nombre = root.findViewById(R.id.nombre_producto);
-        stock = root.findViewById(R.id.stock_producto);
+        nombre = root.findViewById(R.id.edit_name_product);
+        stock = root.findViewById(R.id.edit_stock_product);
         editar = root.findViewById(R.id.button_edit_product);
         editar.setOnClickListener(v -> { editProduct(root); });
     }
