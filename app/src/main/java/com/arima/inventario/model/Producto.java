@@ -4,8 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Producto {
+    private String id;
     private String nombre;
     private int stock;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;
@@ -26,7 +35,8 @@ public class Producto {
     @Override
     public String toString() {
         return "Producto{" +
-                "nombre='" + nombre + '\'' +
+                "id='" + id + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", stock=" + stock +
                 '}';
     }

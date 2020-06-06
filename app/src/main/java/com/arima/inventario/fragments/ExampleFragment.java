@@ -64,7 +64,9 @@ public class ExampleFragment extends DefaultFragment {
                 List<DocumentSnapshot> documento = queryDocumentSnapshots.getResult().getDocuments();
                 List<Producto> productos = new ArrayList<>();
                 for (DocumentSnapshot prod: documento) {
-                    productos.add(prod.toObject(Producto.class));
+                    Producto p = prod.toObject(Producto.class);
+                    p.setId(prod.getId());
+                    productos.add(p);
                 }
                 texto.setText(productos.toString());
             }
