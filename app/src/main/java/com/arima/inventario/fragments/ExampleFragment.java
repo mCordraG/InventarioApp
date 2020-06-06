@@ -10,6 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -90,14 +93,26 @@ public class ExampleFragment extends DefaultFragment {
             Producto s = i.next();
             if(s.getId().equals(p.getId())){
                 firestoreManager.deleteDocument("lista_inventarios/inventario1/productos", p.getId());
-                getProductos();
+                getProductList();
             }
         }
     }
 
     public void goToEncuestaPage(String key){
-        Intent intent = new Intent(thisFragment.getActivity(), MainActivity.class);
-        intent.putExtra("key", key);
-        startActivity(intent);
+        //Intent intent = new Intent(thisFragment.getActivity(), MainActivity.class);
+        //intent.putExtra("key", key);
+        //startActivity(intent);
+
+        // Crear fragmento de tu clase
+        Fragment fragment = new EditarProductoFragment();
+        // Obtener el administrador de fragmentos a través de la actividad
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        // Definir una transacción
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        // Remplazar el contenido principal por el fragmento
+        fragmentTransaction.replace(R.id.fragmentListadoPoductos, fragment);
+        fragmentTransaction.addToBackStack(null);
+        // Cambiar
+        fragmentTransaction.commit();
     }
 }
