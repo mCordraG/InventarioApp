@@ -38,4 +38,8 @@
     <string name="create_email_notification">We sent you an email to verify your account</string>
     <string name="create_text">We will send you an email to verify your account. Check your spam also.</string>
     <string name="create_email_fail">We have issues to deliver the email</string>
+    <string name="create_title">Create product</string>
+    <string name="create_field_name">Name</string>
+    <string name="create_field_stock">Stock</string>
+    <string name="menu_add_product">Add product</string>
 </resources>
