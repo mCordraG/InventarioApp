@@ -43,4 +43,8 @@
     <string name="create_field_stock">Stock</string>
     <string name="menu_add_product">Add product</string>
     <string name="button_delete_product">Delete product</string>
+    <string name="edit_title">Edit product</string>
+    <string name="delete_title">Delete product</string>
+    <string name="stock_text">Enter stock</string>
+    <string name="name_text">Enter name product</string>
 </resources>
