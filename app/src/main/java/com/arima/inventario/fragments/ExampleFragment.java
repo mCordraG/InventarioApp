@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,12 +19,15 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ExampleFragment extends DefaultFragment {
     TextView exampleText;
     LinearLayout lista;
     TextView texto;
+    List<Producto> listado;
+    Button eliminar;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = super.onCreateView(inflater, container, savedInstanceState);
@@ -42,6 +46,8 @@ public class ExampleFragment extends DefaultFragment {
         exampleText = root.findViewById(R.id.example);
         lista = root.findViewById(R.id.lista_desplegable);
         texto = root.findViewById(R.id.nuevo_texto);
+        eliminar = root.findViewById(R.id.eliminar_producto);
+        eliminar.setOnClickListener(v -> { deleteProduct(root); });
     }
 
     public void loadExampleTexts() {
@@ -68,8 +74,26 @@ public class ExampleFragment extends DefaultFragment {
                     p.setId(prod.getId());
                     productos.add(p);
                 }
+                this.listado = productos;
                 texto.setText(productos.toString());
             }
         });
     }
+
+    public void deleteProduct(View view){
+        Producto p = new Producto();
+        p.setId("CIru5lZFsaNnfthEjBuo");
+        p.setNombre("producto");
+        p.setStock(0);
+
+        Iterator<Producto> i = listado.iterator();
+        while (i.hasNext()) {
+            Producto s = i.next();
+            if(s.getId().equals(p.getId())){
+                firestoreManager.deleteDocument("lista_inventarios/inventario1/productos", p.getId());
+                getProductos();
+            }
+        }
+    }
+
 }

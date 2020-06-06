@@ -30,4 +30,5 @@
     <string name="create_field_name">Nombre</string>
     <string name="create_field_stock">Cantidad</string>
     <string name="menu_add_product">Agregar producto</string>
+    <string name="button_delete_product">Eliminar producto</string>
 </resources>

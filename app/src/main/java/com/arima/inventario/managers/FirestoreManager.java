@@ -126,4 +126,10 @@ public class FirestoreManager {
                 .addOnSuccessListener(successHandler)
                 .addOnFailureListener(failureHandler);
     }
+
+    public void deleteDocument(String collectionPath, String documentKey) {
+        db.collection(collectionPath)
+                .document(documentKey)
+                .delete();
+    }
 }
