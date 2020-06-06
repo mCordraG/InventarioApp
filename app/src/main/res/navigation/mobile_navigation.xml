@@ -18,8 +18,8 @@
         tools:layout="@layout/fragment_share" />
 
     <fragment
-        android:id="@+id/add_product"
+        android:id="@+id/edit_product"
         android:name="com.arima.inventario.fragments.AgregarProductoFragment"
         android:label="@string/menu_add_product"
-        tools:layout="@layout/add_product" />
+        tools:layout="@layout/edit_product" />
 </navigation>

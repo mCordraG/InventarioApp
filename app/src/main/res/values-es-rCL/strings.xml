@@ -30,4 +30,8 @@
     <string name="create_field_name">Nombre</string>
     <string name="create_field_stock">Cantidad</string>
     <string name="menu_add_product">Agregar producto</string>
+    <string name="edit_title">Editar producto</string>
+    <string name="delete_title">Eliminar Producto</string>
+    <string name="stock_text">Ingresa Cantidad</string>
+    <string name="name_text">Ingresa nombre producto</string>
 </resources>

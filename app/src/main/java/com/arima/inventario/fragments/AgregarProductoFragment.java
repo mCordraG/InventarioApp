@@ -11,7 +11,9 @@ import androidx.annotation.NonNull;
 
 import com.arima.inventario.R;
 import com.arima.inventario.model.Producto;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
@@ -53,6 +55,12 @@ public class AgregarProductoFragment extends DefaultFragment {
                 Snackbar.make(view, "error", Snackbar.LENGTH_LONG).show();
             }
         });
+
+
+
+
+
+
 
         /*firestoreManager.getDocument("inventarios", "hnoscaceres21", documentSnapshot -> {
             if(documentSnapshot.isSuccessful()){
