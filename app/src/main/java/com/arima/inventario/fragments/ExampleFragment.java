@@ -1,5 +1,6 @@
 package com.arima.inventario.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.arima.inventario.R;
+import com.arima.inventario.activities.MainActivity;
+import com.arima.inventario.adapters.ProductosAdapter;
 import com.arima.inventario.managers.FirestoreManager;
 import com.arima.inventario.model.Example;
 import com.arima.inventario.model.Producto;
@@ -23,16 +28,16 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ExampleFragment extends DefaultFragment {
-    TextView exampleText;
-    LinearLayout lista;
-    TextView texto;
+
     List<Producto> listado;
-    Button eliminar;
+    private List<String> keys;
+    private List<String> nombres;
+    private List<Integer> stock;
+    private RecyclerView productos;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = super.onCreateView(inflater, container, savedInstanceState);
-        loadExampleTexts();
-        getProductos();
+        getProductList();
         return root;
     }
 
@@ -42,40 +47,34 @@ public class ExampleFragment extends DefaultFragment {
     }
 
     @Override
-    public void createViewItems(View root) {
-        exampleText = root.findViewById(R.id.example);
-        lista = root.findViewById(R.id.lista_desplegable);
-        texto = root.findViewById(R.id.nuevo_texto);
-        eliminar = root.findViewById(R.id.eliminar_producto);
-        eliminar.setOnClickListener(v -> { deleteProduct(root); });
-    }
+    public void createViewItems(View root) { productos = root.findViewById(R.id.productos_list); }
 
-    public void loadExampleTexts() {
-        firestoreManager.getDocument(
-                FirestoreManager.FS_COLLECTION_EXAMPLE,
-                FirestoreManager.FS_DOCUMENT_EXAMPLE,
-                documentSnapshot -> {
-                    if(!documentSnapshot.isSuccessful()) {
-                        exampleText.setText("---");
-                        return;
-                    }
-                    Example object = documentSnapshot.getResult().toObject(Example.class);
-                    exampleText.setText(object.getExampleField());
-                });
-    }
-
-    public void getProductos() {
+    public void getProductList() {
         firestoreManager.getCollection("lista_inventarios/inventario1/productos", queryDocumentSnapshots -> {
             if(queryDocumentSnapshots.isSuccessful()) {
                 List<DocumentSnapshot> documento = queryDocumentSnapshots.getResult().getDocuments();
-                List<Producto> productos = new ArrayList<>();
-                for (DocumentSnapshot prod: documento) {
-                    Producto p = prod.toObject(Producto.class);
-                    p.setId(prod.getId());
-                    productos.add(p);
+
+                keys = new ArrayList<>();
+                nombres = new ArrayList<>();
+                stock = new ArrayList<>();
+
+                for(int i = 0; i < documento.size(); i ++) {
+                    DocumentSnapshot documentoSnap = documento.get(i);
+                    keys.add(i, documentoSnap.getId());
+                    Producto producto = documentoSnap.toObject(Producto.class);
+                    nombres.add(i, producto.getNombre());
+                    stock.add(i, producto.getStock());
                 }
-                this.listado = productos;
-                texto.setText(productos.toString());
+                final ProductosAdapter productosAdapter = new ProductosAdapter(nombres);
+                productosAdapter.setOnClickListener(
+                        v -> goToEncuestaPage(keys.get(productos.getChildAdapterPosition(v)))
+                );
+
+                productos.setAdapter(productosAdapter);
+                productos.setLayoutManager(new LinearLayoutManager(thisFragment.getActivity(), LinearLayoutManager.VERTICAL, false));
+
+            } else {
+
             }
         });
     }
@@ -96,4 +95,9 @@ public class ExampleFragment extends DefaultFragment {
         }
     }
 
+    public void goToEncuestaPage(String key){
+        Intent intent = new Intent(thisFragment.getActivity(), MainActivity.class);
+        intent.putExtra("key", key);
+        startActivity(intent);
+    }
 }

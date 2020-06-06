@@ -47,4 +47,5 @@
     <string name="delete_title">Delete product</string>
     <string name="stock_text">Enter stock</string>
     <string name="name_text">Enter name product</string>
+    <string name="product_list_title">Listado de Productos</string>
 </resources>
