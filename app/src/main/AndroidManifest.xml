@@ -16,6 +16,7 @@
         <activity android:name="com.arima.inventario.activities.RecoverPasswordActivity" />
         <activity android:name="com.arima.inventario.activities.CreateAccountActivity" />
         <activity android:name="com.arima.inventario.activities.LoginActivity" />
+        <activity android:name="com.arima.inventario.activities.EditProductActivity" />
         <activity
             android:name="com.arima.inventario.activities.SplashActivity"
             android:screenOrientation="portrait"

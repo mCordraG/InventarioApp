@@ -12,10 +12,6 @@
             android:id="@+id/add_product"
             android:icon="@drawable/ic_add_product"
             android:title="@string/menu_add_product" />
-        <item
-            android:id="@+id/edit_product"
-            android:icon="@drawable/ic_edit_product"
-            android:title="@string/edit_title" />
     </group>
 
     <item android:title="Communicate">
