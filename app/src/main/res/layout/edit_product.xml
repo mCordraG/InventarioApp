@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    android:layout_margin="0dp"
+    android:background="@drawable/fondologin"
     android:orientation="vertical">
 
     <EditText
         android:id="@+id/edit_name_product"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="344dp"
+        android:layout_height="42dp"
+        android:backgroundTint="@color/colorStartButton"
         android:hint="@string/name_text"
+        android:textColor="@color/colorWhite"
+        android:textColorHighlight="@color/colorStartButton"
+        android:textColorHint="@color/colorStartButton"
+        android:textColorLink="@color/colorWhite"
+        android:textCursorDrawable="@color/colorStartButton"
         app:layout_constraintBottom_toTopOf="@+id/button_delete_product"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,9 +26,15 @@
 
     <EditText
         android:id="@+id/edit_stock_product"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="344dp"
+        android:layout_height="42dp"
+        android:backgroundTint="@color/colorStartButton"
         android:hint="@string/stock_text"
+        android:textColor="@color/colorWhite"
+        android:textColorHighlight="@color/colorStartButton"
+        android:textColorHint="@color/colorStartButton"
+        android:textColorLink="@android:color/white"
+        android:textCursorDrawable="@color/colorStartButton"
         app:layout_constraintBottom_toTopOf="@+id/button_delete_product"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,24 +42,32 @@
 
     <Button
         android:id="@+id/button_delete_product"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="54dp"
         android:layout_weight="1"
+        android:background="@drawable/btn_uno"
         android:text="@string/delete_title"
+        android:textColor="@drawable/txt_btn_uno"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.833"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.658" />
 
     <Button
         android:id="@+id/button_edit_product"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="54dp"
         android:layout_weight="1"
+        android:background="@drawable/btn_uno"
         android:text="@string/edit_title"
+        android:textColor="@drawable/txt_btn_uno"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_delete_product"
+        app:layout_constraintHorizontal_bias="0.608"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.658" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

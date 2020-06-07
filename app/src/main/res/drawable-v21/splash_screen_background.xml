@@ -2,7 +2,10 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:opacity="opaque">
 
-    <item android:drawable="@color/colorSplash"/>
-    <item android:drawable="@drawable/ic_logo" android:gravity="center"/>
+    <item android:drawable="@drawable/fondologin"/>
+    <item android:drawable="@drawable/check_splash"
+        android:gravity="center"
+        android:width="500dp"
+        android:height="500dp"/>
 
 </layer-list>
