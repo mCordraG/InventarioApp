@@ -5,29 +5,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.arima.inventario.R;
-import com.arima.inventario.activities.MainActivity;
+import com.arima.inventario.activities.EditProductActivity;
 import com.arima.inventario.adapters.ProductosAdapter;
-import com.arima.inventario.managers.FirestoreManager;
-import com.arima.inventario.model.Example;
 import com.arima.inventario.model.Producto;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class ExampleFragment extends DefaultFragment {
@@ -70,7 +59,7 @@ public class ExampleFragment extends DefaultFragment {
                 }
                 final ProductosAdapter productosAdapter = new ProductosAdapter(nombres);
                 productosAdapter.setOnClickListener(
-                        v -> goToEncuestaPage(keys.get(productos.getChildAdapterPosition(v)))
+                        v -> goToEditProductPage(nombres.get(productos.getChildAdapterPosition(v)), stock.get(productos.getChildAdapterPosition(v)), keys.get(productos.getChildAdapterPosition(v)))
                 );
 
                 productos.setAdapter(productosAdapter);
@@ -82,37 +71,11 @@ public class ExampleFragment extends DefaultFragment {
         });
     }
 
-    public void deleteProduct(View view){
-        Producto p = new Producto();
-        p.setId("CIru5lZFsaNnfthEjBuo");
-        p.setNombre("producto");
-        p.setStock(0);
-
-        Iterator<Producto> i = listado.iterator();
-        while (i.hasNext()) {
-            Producto s = i.next();
-            if(s.getId().equals(p.getId())){
-                firestoreManager.deleteDocument("lista_inventarios/inventario1/productos", p.getId());
-                getProductList();
-            }
-        }
-    }
-
-    public void goToEncuestaPage(String key){
-        //Intent intent = new Intent(thisFragment.getActivity(), MainActivity.class);
-        //intent.putExtra("key", key);
-        //startActivity(intent);
-
-        // Crear fragmento de tu clase
-        Fragment fragment = new EditarProductoFragment();
-        // Obtener el administrador de fragmentos a través de la actividad
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        // Definir una transacción
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        // Remplazar el contenido principal por el fragmento
-        fragmentTransaction.replace(R.id.fragmentListadoPoductos, fragment);
-        fragmentTransaction.addToBackStack(null);
-        // Cambiar
-        fragmentTransaction.commit();
+    public void goToEditProductPage(String name, int stock, String id){
+        Intent intent = new Intent(thisFragment.getActivity(), EditProductActivity.class);
+        intent.putExtra("Nombre", name);
+        intent.putExtra("Stock", stock);
+        intent.putExtra("ID", id);
+        startActivity(intent);
     }
 }
