@@ -7,10 +7,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.arima.inventario.R;
+import com.arima.inventario.model.Producto;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +20,7 @@ public class EditProductActivity extends DefaultActivity {
     private TextView nombre;
     private TextView stock;
     private Button editar;
+    private Button eliminar;
     private String recieveName;
     private String recieveStock;
     private String recieveID;
@@ -38,7 +41,9 @@ public class EditProductActivity extends DefaultActivity {
         nombre = findViewById(R.id.edit_name_product);
         stock = findViewById(R.id.edit_stock_product);
         editar = findViewById(R.id.button_edit_product);
+        eliminar = findViewById(R.id.button_delete_product);
         editar.setOnClickListener(v -> { editProduct(editar); });
+        eliminar.setOnClickListener(v -> { deleteProduct(editar); });
         Intent intent = getIntent();
         Bundle texto = intent.getExtras();
         recieveName = texto.get("Nombre").toString();
@@ -70,7 +75,18 @@ public class EditProductActivity extends DefaultActivity {
             validacion.add(recieveID.length() <= 0 ? "ID" : "");
             Snackbar.make(view, validacion.toString() + " requerido", Snackbar.LENGTH_LONG).show();
         }
+        goToListPage();
+    }
 
+    public void deleteProduct(View view){
+        firestoreManager.deleteDocument("lista_inventarios/inventario1/productos", recieveID);
+        goToListPage();
+    }
+
+    public void goToListPage(){
+        Intent intent = new Intent(thisActivity, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }
