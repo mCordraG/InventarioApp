@@ -14,17 +14,19 @@ import java.util.List;
 
 public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.LineaViewHolder> implements View.OnClickListener {
     private List<String> nombres;
+    private List<Integer> stock;
 
     private View.OnClickListener listener;
 
-    public ProductosAdapter(List<String> nombres) {
+    public ProductosAdapter(List<String> nombres, List<Integer> stock) {
         this.nombres = nombres;
+        this.stock = stock;
     }
 
     @NonNull
     @Override
     public LineaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.detalle_producto, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.productos_listado_vertical, parent, false);
         itemView.setOnClickListener(this);
         LineaViewHolder viewHolder = new LineaViewHolder(itemView);
         return viewHolder;
@@ -32,7 +34,7 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.Line
 
     @Override
     public void onBindViewHolder(@NonNull LineaViewHolder holder, int position) {
-        holder.setProducto(nombres.get(position));
+        holder.setProducto(nombres.get(position), stock.get(position));
     }
 
     @Override
@@ -52,15 +54,18 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.Line
 
     public static class LineaViewHolder extends RecyclerView.ViewHolder {
         private TextView name;
+        private TextView stock_producto;
 
         public LineaViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name = itemView.findViewById(R.id.nombre);
+            name = itemView.findViewById(R.id.nombre_producto);
+            stock_producto = itemView.findViewById(R.id.stock_producto);
         }
 
-        public void setProducto(String nombre) {
+        public void setProducto(String nombre, Integer stock) {
             name.setText(nombre);
+            stock_producto.setText("Stock: "+stock);
         }
     }
 

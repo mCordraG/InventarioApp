@@ -57,7 +57,7 @@ public class ExampleFragment extends DefaultFragment {
                     nombres.add(i, producto.getNombre());
                     stock.add(i, producto.getStock());
                 }
-                final ProductosAdapter productosAdapter = new ProductosAdapter(nombres);
+                final ProductosAdapter productosAdapter = new ProductosAdapter(nombres, stock);
                 productosAdapter.setOnClickListener(
                         v -> goToEditProductPage(nombres.get(productos.getChildAdapterPosition(v)), stock.get(productos.getChildAdapterPosition(v)), keys.get(productos.getChildAdapterPosition(v)))
                 );

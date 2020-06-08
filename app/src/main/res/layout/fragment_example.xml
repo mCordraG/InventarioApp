@@ -26,6 +26,7 @@
         android:layout_marginBottom="13dp"
         android:text="@string/product_list_title"
         android:textColor="@color/colorWhite"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/productos_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
