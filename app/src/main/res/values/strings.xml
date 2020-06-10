@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">AppInventario</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
@@ -47,5 +46,6 @@
     <string name="delete_title">Delete product</string>
     <string name="stock_text">Enter stock</string>
     <string name="name_text">Enter name product</string>
-    <string name="product_list_title">Product LIst</string>
+    <string name="product_list_title">Product List</string>
+    <string name="app_name" translatable="false">Check app</string>
 </resources>

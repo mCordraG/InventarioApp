@@ -40,33 +40,39 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button_edit_product"
-        android:layout_width="140dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="228dp"
-        android:layout_weight="1"
-        android:background="@drawable/btn_uno"
-        android:text="@string/edit_title"
-        android:textColor="@drawable/txt_btn_uno"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_add_product"
-        app:layout_constraintHorizontal_bias="0.425"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/button_add_product"
         android:layout_width="140dp"
         android:layout_height="54dp"
+        android:layout_marginTop="168dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginBottom="228dp"
+        android:layout_marginBottom="124dp"
         android:layout_weight="1"
         android:background="@drawable/btn_uno"
         android:text="@string/delete_title"
         android:textColor="@drawable/txt_btn_uno"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.934"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stock_producto"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button_edit_product"
+        android:layout_width="140dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginBottom="124dp"
+        android:layout_weight="1"
+        android:background="@drawable/btn_uno"
+        android:text="@string/edit_title"
+        android:textColor="@drawable/txt_btn_uno"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_add_product"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stock_producto"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/stock_producto"

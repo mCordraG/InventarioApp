@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AppInventario</string>
     <string name="login_label_email">Correo electrónico</string>
     <string name="login_label_password">Contraseña</string>
     <string name="login_ok">Acceder</string>

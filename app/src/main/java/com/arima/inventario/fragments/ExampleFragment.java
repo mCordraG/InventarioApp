@@ -32,10 +32,8 @@ public class ExampleFragment extends DefaultFragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = super.onCreateView(inflater, container, savedInstanceState);
-        /*boolean inventory = loadInventory();
-        if(!inventory){
-            createInventory();
-        }*/
+        // loadInventory();
+        createInventory();
         getProductList();
         return root;
     }
@@ -87,11 +85,22 @@ public class ExampleFragment extends DefaultFragment {
         startActivity(intent);
     }
 
-    public void createInventory(){
+    public boolean createInventory(){
+        AtomicBoolean success = new AtomicBoolean(false);
         Inventario inv = new Inventario();
         inv.setId(authManager.getUser().getId());
 
-        firestoreManager.addDocument("lista_inventarios", inv, documentReference -> {});
+        firestoreManager.getDocument("lista_inventarios", authManager.getUser().getId(), queryDocumentSnapshots->{
+            if(queryDocumentSnapshots.isSuccessful()){
+                preferencesManager.savePreference("InventoryID", authManager.getUser().getId());
+                success.set(true);
+            }else{
+                firestoreManager.saveObject("lista_inventarios", authManager.getUser().getId(), inv, documentReference -> {
+                    loadInventory();
+                });
+            }
+        });
+        return success.get();
     }
 
     public boolean loadInventory(){

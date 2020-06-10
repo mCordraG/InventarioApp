@@ -2,11 +2,20 @@ package com.arima.inventario.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+
 import com.arima.inventario.R;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -22,6 +31,7 @@ public class EditProductActivity extends DefaultActivity {
     private String recieveName;
     private String recieveStock;
     private String recieveID;
+    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +40,7 @@ public class EditProductActivity extends DefaultActivity {
 
     @Override
     public void setLayout() {
-        setContentView(R.layout.edit_product);
+        setContentView(R.layout.activity_edit);
     }
 
     @Override
@@ -86,6 +96,35 @@ public class EditProductActivity extends DefaultActivity {
 
     public void goToListPage(){
         Intent intent = new Intent(thisActivity, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logout:
+                logout();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void logout() {
+        authManager.logout();
+        preferencesManager.clearSharedPreferences();
+        redirectToLogin();
+    }
+
+    private void redirectToLogin() {
+        Intent intent = new Intent(thisActivity, LoginActivity.class);
         startActivity(intent);
         finish();
     }
