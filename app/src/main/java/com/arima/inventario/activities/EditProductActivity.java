@@ -7,12 +7,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.arima.inventario.R;
-import com.arima.inventario.model.Producto;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -38,10 +36,10 @@ public class EditProductActivity extends DefaultActivity {
     @Override
     public void createViews() {
         super.createViews();
-        nombre = findViewById(R.id.edit_name_product);
-        stock = findViewById(R.id.edit_stock_product);
+        nombre = findViewById(R.id.nombre_producto);
+        stock = findViewById(R.id.stock_producto);
         editar = findViewById(R.id.button_edit_product);
-        eliminar = findViewById(R.id.button_delete_product);
+        eliminar = findViewById(R.id.button_add_product);
         editar.setOnClickListener(v -> { editProduct(editar); });
         eliminar.setOnClickListener(v -> { deleteProduct(editar); });
         Intent intent = getIntent();
@@ -57,6 +55,8 @@ public class EditProductActivity extends DefaultActivity {
         Map<String, Object> data = new HashMap<>();
         String nProducto = nombre.getText().toString();
         String sProducto = stock.getText().toString();
+        String keyInventory = preferencesManager.getStringPreference("InventoryID");
+
         if(nProducto.length() > 0 && sProducto.length() > 0 && recieveID.length() > 0){
             data.put("nombre",nProducto);
             data.put("stock",Integer.parseInt(sProducto));
@@ -79,6 +79,7 @@ public class EditProductActivity extends DefaultActivity {
     }
 
     public void deleteProduct(View view){
+        String keyInventory = preferencesManager.getStringPreference("InventoryID");
         firestoreManager.deleteDocument("lista_inventarios/inventario1/productos", recieveID);
         goToListPage();
     }

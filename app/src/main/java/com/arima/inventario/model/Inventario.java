@@ -3,27 +3,17 @@ package com.arima.inventario.model;
 import java.util.List;
 
 public class Inventario {
-    private List<String> productos;
-
-    public Inventario(List<String> productos) {
-        this.productos = productos;
-    }
+    private String id;
 
     public Inventario() {
     }
 
-    public List<String> getProductos() {
-        return productos;
+    public String getId() {
+        return id;
     }
 
-    public void setProductos(List<String> productos) {
-        this.productos = productos;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Inventario{" +
-                "productos=" + productos +
-                '}';
-    }
 }

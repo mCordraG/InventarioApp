@@ -4,78 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondologin">
+    android:layout_margin="0dp"
+    android:background="@drawable/fondologin"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/nombre_producto"
+        android:layout_width="344dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="@color/colorStartButton"
+        android:hint="@string/name_text"
+        android:inputType="textNoSuggestions"
+        android:textColor="@color/colorWhite"
+        android:textColorHighlight="@color/colorStartButton"
+        android:textColorHint="@color/colorStartButton"
+        android:textColorLink="@color/colorWhite"
+        android:textCursorDrawable="@color/colorStartButton"
+        android:autofillHints=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloCrearProducto" />
 
     <TextView
         android:id="@+id/tituloCrearProducto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="96dp"
         android:text="@string/create_title"
         android:textColor="@color/colorWhite"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="58dp"
-        android:layout_height="19dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/create_field_name"
-        android:textColor="@color/colorWhite"
+    <Button
+        android:id="@+id/button_add_product"
+        android:layout_width="140dp"
+        android:layout_height="54dp"
+        android:layout_weight="1"
+        android:background="@drawable/btn_uno"
+        android:text="@string/create_title"
+        android:textColor="@drawable/txt_btn_uno"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tituloCrearProducto" />
-
-    <EditText
-        android:id="@+id/nombre_producto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:autoText="false"
-        android:autofillHints="productName"
-        android:backgroundTint="@color/colorStartButton"
-        android:ems="10"
-        android:inputType="textNoSuggestions"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <TextView
-        android:id="@+id/text_stock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="@string/create_field_stock"
-        android:textColor="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_producto" />
+        app:layout_constraintTop_toBottomOf="@+id/stock_producto"
+        app:layout_constraintVertical_bias="0.287" />
 
     <EditText
         android:id="@+id/stock_producto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:autofillHints="productStock"
+        android:layout_width="344dp"
+        android:layout_height="42dp"
+        android:autofillHints=""
         android:backgroundTint="@color/colorStartButton"
-        android:ems="10"
+        android:hint="@string/stock_text"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_stock" />
-
-    <Button
-        android:id="@+id/button_add_product"
-        android:layout_width="246dp"
-        android:layout_height="41dp"
-        android:background="@drawable/btn_uno"
-        android:text="@string/create_title"
         android:textColor="@color/colorWhite"
+        android:textColorHighlight="@color/colorStartButton"
+        android:textColorHint="@color/colorStartButton"
+        android:textColorLink="@android:color/white"
+        android:textCursorDrawable="@color/colorStartButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stock_producto" />
+        app:layout_constraintTop_toBottomOf="@+id/nombre_producto"
+        app:layout_constraintVertical_bias="0.174" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
