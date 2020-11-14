@@ -13,6 +13,7 @@ import com.arima.inventario.managers.FirestoreManager;
 import com.arima.inventario.managers.SharedPreferencesManager;
 
 public abstract class DefaultActivity extends AppCompatActivity {
+    // Coment test
     protected DefaultActivity thisActivity;
 
     protected FirebaseAuthManager authManager;
